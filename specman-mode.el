@@ -65,7 +65,10 @@
 ;;  specman-mode is a major mode for editing code written in the 'e' language
 ;;
 
-(defconst specman-mode-version "$$Revision: 1.22 $$"
+;; Branch 'shr' created by Scott Roland <scott@constrainedrandom.com>
+;; GitHub home of 'shr' branch: https://github.com/scottroland/specman-mode
+
+(defconst specman-mode-version "$$Revision: 1.22 (shr 1) $$"
   "Version of this Specman mode.")
 
 (defun specman-version ()
