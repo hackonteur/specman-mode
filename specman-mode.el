@@ -673,7 +673,7 @@ format (e.g. 09/17/1997) is not supported."
 (defsubst specman-prepared-buffer-substring (beg end)
   "Remove extra spaces and new-lines from strings."
   (save-match-data
-    (if (eq emacs-kind 'emacs)
+    (if (eq specman-emacs-kind 'emacs)
         (replace-regexp-in-string "[ \t\n]+"
                                     " "
                                     (replace-regexp-in-string "^[ \t\n]+\\|[ \t\n]+$"
@@ -1290,7 +1290,7 @@ supported list, along with the values for this variable:
     ))
   )
 
-(defvar emacs-kind nil)
+(defvar specman-emacs-kind nil)
 
 ;; emacs or xemacs
 (if (or (string-match "Lucid" emacs-version)
