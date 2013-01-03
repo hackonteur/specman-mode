@@ -68,7 +68,7 @@
 ;; Branch 'shr' created by Scott Roland <scott@constrainedrandom.com>
 ;; GitHub home of 'shr' branch: https://github.com/scottroland/specman-mode
 
-(defconst specman-mode-version "$$Revision: 1.22 (shr 1) $$"
+(defconst specman-mode-version "Revision: 1.22 (shr 2)"
   "Version of this Specman mode.")
 
 (defun specman-version ()
@@ -1850,7 +1850,9 @@ to context."
 (defun specman-kill-entire-line ()
   "Kill entire line and indent"
   (interactive)
-  (kill-entire-line)
+  (if (eq specman-emacs-kind 'emacs)
+      (kill-whole-line)
+      (kill-entire-line))
   (specman-activate-indent)
   )
 
