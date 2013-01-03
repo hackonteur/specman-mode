@@ -68,7 +68,7 @@
 ;; Branch 'shr' created by Scott Roland <scott@constrainedrandom.com>
 ;; GitHub home of 'shr' branch: https://github.com/scottroland/specman-mode
 
-(defconst specman-mode-version "Revision: 1.22 (shr 2)"
+(defconst specman-mode-version "Revision: 1.22 (shr 3)"
   "Version of this Specman mode.")
 
 (defun specman-version ()
@@ -1896,7 +1896,6 @@ to context."
     (define-key map "\C-c\C-c"                  'comment-region)
     (define-key map "\C-c\C-u"                  'specman-uncomment-region)
     (define-key map [(meta q)]                  'specman-realign-comment)
-	(define-key map [(control d)]               'specman-kill-entire-line)
 	(define-key map [(shift insert)]            'specman-yank)
     map)
   "Keymap used in Specman mode."
