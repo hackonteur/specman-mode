@@ -140,18 +140,18 @@
         (defmacro customize (&rest args)
           (message "Sorry, Customize is not available with this version of emacs"))
         (defmacro defcustom (var value doc &rest args)
-          (` (defvar (, var) (, value) (, doc))))
+          `(defvar ,var ,value , doc))
         )
       (if (fboundp 'defface)
           nil ;; great!
         (defmacro defface (var value doc &rest args)
-          (` (make-face (, var))))
+          `(make-face ,var))
         )
       (if (and (featurep 'custom) (fboundp 'customize-group))
           nil ;; We've got what we needed
         ;; We have an intermediate custom-library, hack around it!
         (defmacro customize-group (var &rest args)
-          (`(customize (, var) )))
+          `(customize ,var) )
         )
       (if (and (featurep 'custom) (fboundp 'custom-declare-variable))
           nil ;; We've got what we needed
@@ -160,14 +160,14 @@
         (defmacro customize (&rest args)
           (message "Sorry, Customize is not available with this version of emacs"))
         (defmacro defcustom (var value doc &rest args)
-          (` (defvar (, var) (, value) (, doc))))
+          `(defvar ,var ,value , doc))
         )
       
       (if (and (featurep 'custom) (fboundp 'customize-group))
           nil ;; We've got what we needed
         ;; We have an intermediate custom-library, hack around it!
         (defmacro customize-group (var &rest args)
-          (`(customize (, var) )))
+          `(customize ,var) )
         )
       (condition-case nil
           (require 'easymenu)
@@ -410,13 +410,14 @@ format (e.g. 09/17/1997) is not supported."
   "cover[ \t\n]+\\([A-Za-z0-9_]+\\)[ \t\n]+is"
   "Regexp that identifies cover definitions (arg 1)")
 
-(defconst specman-symbol-begin-regexp
-  "\\<"
-  "Regexp that identifies the beginning of a symbol")
+(eval-and-compile
+  (defconst specman-symbol-begin-regexp
+    "\\<"
+    "Regexp that identifies the beginning of a symbol")
 
-(defconst specman-symbol-end-regexp
-  "\\>"
-  "Regexp that identifies the end of a symbol")
+  (defconst specman-symbol-end-regexp
+    "\\>"
+    "Regexp that identifies the end of a symbol"))
 
 (defconst specman-number-regexp
   (concat
@@ -751,7 +752,7 @@ scope, matching-scope and parent-scope-opener"
                      :paren-parent nil))
               scope-index)
         
-        (when (re-search-forward "^<'" buffer-end nil)
+        (when (re-search-forward "^<'" buffer-end t)
           (while (and (< (point) buffer-end)
                       (re-search-forward search-regexp buffer-end 'move))
             
@@ -3139,7 +3140,7 @@ See also `specman-font-lock-extra-types'.")
 
 ;;; Hacks for FSF
 (require 'font-lock)
-(defvar specman-need-fld 1)
+(defvar specman-need-fld nil)
 (defvar font-lock-defaults-alist nil)   ;In case we are XEmacs
 (if specman-need-fld
     (let ((specman-mode-defaults
@@ -3209,6 +3210,9 @@ Key Bindings:
   (make-local-variable 'indent-line-function)
   (setq indent-line-function 'specman-indent-line)
   
+  (set (make-local-variable 'font-lock-defaults)
+       (get 'specman-mode 'font-lock-defaults))
+
   (make-local-variable 'comment-start)
   (make-local-variable 'comment-end)
   (make-local-variable 'block-comment-start)
@@ -3452,7 +3456,7 @@ Key Bindings:
                 (goto-char lim)
                 (if (equal (point) ;; enter the scope
                            (point-min))
-                    (re-search-forward "^<'")
+                    (re-search-forward "^<'" nil t)
                   (forward-char 1))
                 (specman-forward-ws)
                 (forward-to-indentation 0)
@@ -5375,20 +5379,22 @@ the user to edit."
 ;; =============================================================================
 ;; Require package filladapt
 
-(require 'filladapt)
+(when (require 'filladapt nil t)
 
-(add-hook 'specman-mode-hook
-          '(lambda () (auto-fill-mode 1)))
-(add-hook 'specman-mode-hook
-          '(lambda () (filladapt-mode 1)))
-
-                                        ; The e comment token in the token table must appeat before the bullet token
-                                        ; since the bullet regexp include "-+". That's why we put it in the begining of
-                                        ; the list. The order in the other lists is not important.
-                                        ; C++ style comments are already recognized.
-(setcar filladapt-token-table '("---*" e-comment))
-(setcar filladapt-token-match-table '(e-comment e-comment))
-(setcar filladapt-token-conversion-table '(e-comment . exact))
+  (add-hook 'specman-mode-hook
+            '(lambda () (auto-fill-mode 1)))
+  (add-hook 'specman-mode-hook
+            '(lambda () (filladapt-mode 1)))
+  
+  ; The e comment token in the token table must appeat before the bullet token
+  ; since the bullet regexp include "-+". That's why we put it in the begining of
+  ; the list. The order in the other lists is not important.
+  ; C++ style comments are already recognized.
+  (setcar filladapt-token-table '("---*" e-comment))
+  (setcar filladapt-token-match-table '(e-comment e-comment))
+  (setcar filladapt-token-conversion-table '(e-comment . exact))
+  (setcar filladapt-token-conversion-table '(e-comment . exact))
+)
 
 
 
