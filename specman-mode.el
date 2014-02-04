@@ -5393,7 +5393,6 @@ the user to edit."
   (setcar filladapt-token-table '("---*" e-comment))
   (setcar filladapt-token-match-table '(e-comment e-comment))
   (setcar filladapt-token-conversion-table '(e-comment . exact))
-  (setcar filladapt-token-conversion-table '(e-comment . exact))
 )
 
 
