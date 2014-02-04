@@ -1,7 +1,7 @@
 ;; @(#) specman-mode.el -- Mode for editing specman files
 ;; @(#) $Id: specman-mode.el,v 1.22 2005/08/08 14:39:13 urim Exp $
 ;; @(#) $Keywords: tools $
-;; $KnownCompatibility: 19.28 $
+;; $KnownCompatibility: 24.3 $
 
 ;; This file is not part of Emacs
 
@@ -65,10 +65,10 @@
 ;;  specman-mode is a major mode for editing code written in the 'e' language
 ;;
 
-;; Branch 'shr' created by Scott Roland <scott@constrainedrandom.com>
-;; GitHub home of 'shr' branch: https://github.com/scottroland/specman-mode
+;; Branch 'shr' created by Scott Roland <scott@hackonteur.com>
+;; GitHub home of 'shr' branch: https://github.com/hackonteur/specman-mode
 
-(defconst specman-mode-version "Revision: 1.22 (shr 4)"
+(defconst specman-mode-version "Revision: 1.22 (shr 5)"
   "Version of this Specman mode.")
 
 (defun specman-version ()
