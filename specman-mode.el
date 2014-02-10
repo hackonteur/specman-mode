@@ -1897,6 +1897,7 @@ to context."
     (define-key map "\C-c\C-c"                  'comment-region)
     (define-key map "\C-c\C-u"                  'specman-uncomment-region)
     (define-key map [(meta q)]                  'specman-realign-comment)
+    ;(define-key map [(control d)]               'specman-kill-entire-line)
     (define-key map [(shift insert)]            'specman-yank)
     map)
   "Keymap used in Specman mode."
