@@ -1,23 +1,23 @@
 ;; @(#) specman-mode.el -- Mode for editing specman files
-;; @(#) $Id: specman-mode.el,v 1.22 2005/08/08 14:39:13 urim Exp $
+;; @(#) $Id: specman-mode.el,v 1.23 2013/05/23 07:03:00 pouyet Exp $
 ;; @(#) $Keywords: tools $
-;; $KnownCompatibility: 24.3 $
+;; $KnownCompatibility: 23.1+, XEmacs21.4.15+ $
 
 ;; This file is not part of Emacs
 
 
-;; Copyright (C) 2006 Cadence Design Systems, Inc.
+;; Copyright (C) 2013 Cadence Design Systems, Inc.
 ;; Authors:      Uri Maoz <urim@cadence.com>
 ;;               Michael McNamara <mac@cadence.com>
 ;;               Yaron Peri <yperi@cadence.com>
 ;; Maintainer:   
-;; Created:      May 5 2000
+;; Created:      May 25 2013
 
 
 ;; LCD Archive Entry:
 ;; specman-mode|Michael McNamara|mac@verisity.com|
 ;; Specman Major mode. auto indents, colorizes, code in the 'e language|
-;; 05-May-2000|$Revision: 1.22 $|~/misc/specman-mode.el.Z|
+;; 25-May-2013|$Revision: 1.23 $|~/misc/specman-mode.el.Z|
 
 ;; COPYRIGHT NOTICE
 ;;
@@ -68,7 +68,7 @@
 ;; Branch 'shr' created by Scott Roland <scott@hackonteur.com>
 ;; GitHub home of 'shr' branch: https://github.com/hackonteur/specman-mode
 
-(defconst specman-mode-version "Revision: 1.22 (shr 5)"
+(defconst specman-mode-version "Revision: 1.23 (shr 1)"
   "Version of this Specman mode.")
 
 (defun specman-version ()
@@ -5380,7 +5380,7 @@ the user to edit."
 ;; =============================================================================
 ;; Require package filladapt
 
-(when (require 'filladapt nil t)
+(when (require 'filladapt nil)
 
   (add-hook 'specman-mode-hook
             '(lambda () (auto-fill-mode 1)))
