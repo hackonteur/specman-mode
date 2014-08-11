@@ -2356,7 +2356,7 @@ See also `specman-font-lock-extra-types'.")
             ;; generation keywords
             ;; -------------------
             "before" "keep" "keeping" "soft" "select" "gen"
-            "others" "pass" "edges" "min" "max"
+            "others" "pass" "edges" "min" "max" "const"
 
             
             ;; coverage keywords
