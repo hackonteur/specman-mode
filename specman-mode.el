@@ -68,7 +68,7 @@
 ;; Branch 'shr' created by Scott Roland <scott@hackonteur.com>
 ;; GitHub home of 'shr' branch: https://github.com/hackonteur/specman-mode
 
-(defconst specman-mode-version "Revision: 1.23 (shr 1)"
+(defconst specman-mode-version "Revision: 1.23 (shr 2)"
   "Version of this Specman mode.")
 
 (defun specman-version ()
