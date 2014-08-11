@@ -4791,10 +4791,9 @@ method name only, otherwise a full header with comments."
                  (equal (char-before) ?\t)))
     (insert " "))
   
-  (insert "{") (indent-according-to-mode)
+  (insert "{")
   (end-of-line) (newline)
-  (insert "}") 
-  (specman-electric-semicolon)
+  (insert "};") 
   (indent-according-to-mode)
   (previous-line 1) (end-of-line)
   (specman-insert-newline))
