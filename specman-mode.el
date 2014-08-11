@@ -213,6 +213,7 @@
   :group 'specman-mode
   :type 'integer
   )
+(put 'specman-basic-offset 'safe-local-variable #'integerp)
 
 (defconst specman-tab-width specman-basic-offset
   "*Tab stop width"
