@@ -3241,7 +3241,8 @@ Key Bindings:
 
   (setq ecom-syntax-highlight
         (string-match "\\.ecom\\'"
-                      (buffer-file-name)))
+		      (or (buffer-file-name)
+			  (buffer-name))))
 
   ;; setup the comment indent variable in a Emacs version portable way
   ;; ignore any byte compiler warnings you might get here
