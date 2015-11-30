@@ -80,6 +80,9 @@
 
 (autoload 'specman-mode "specman-mode" "Specman code editing mode" t) 
 
+;; remove-duplicates below requires cl
+(require 'cl)
+
 (setq auto-mode-alist 
       (remove-duplicates
        (append (list 
