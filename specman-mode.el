@@ -2428,8 +2428,6 @@ See also `specman-font-lock-extra-types'.")
          
          "\\(\\(?:all\\|first\\)[ \t\n]+of\\)\\|"
 
-         "\\(check[ \t\n]+that\\)\\|"
-         
          "\\(each[ \t\n]+\\(?:file\\|line\\)\\)\\|"
          "\\(in[ \t\n]+file\\)\\|"
          "\\(down[ \t\n]+to\\)\\|"
@@ -2555,6 +2553,11 @@ See also `specman-font-lock-extra-types'.")
          ;; Fontify numbers
          (cons specman-number-regexp
                '(1 'font-lock-constant-face append))
+         ;; Fontify (named) check/expect
+         (cons "\\(check\\)[ \t\n]+\\(?:\\sw+[ \t\n]+\\)?\\(that\\)"
+               '((1 'font-lock-keyword-face append) (2 'font-lock-keyword-face append)))
+         (cons "\\(expect\\)[ \t\n]+\\(?:\\sw+[ \t\n]+\\(is\\)\\>\\)?"
+               '((1 'font-lock-keyword-face append) (2 'font-lock-keyword-face append)))
          ;; Fontify all builtin keywords
          (cons specman-keywords
                '(0 'font-lock-keyword-face append))
