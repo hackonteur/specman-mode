@@ -2556,7 +2556,8 @@ See also `specman-font-lock-extra-types'.")
          ;; Fontify (named) check/expect
          (cons "\\(check\\)[ \t\n]+\\(?:\\sw+[ \t\n]+\\)?\\(that\\)"
                '((1 'font-lock-keyword-face append) (2 'font-lock-keyword-face append)))
-         (cons "\\(expect\\)[ \t\n]+\\(?:\\sw+[ \t\n]+\\(is\\)\\>\\)?"
+         ;; named expect is optional. Anonymous expect handled via specman-keywords list.
+         (cons "\\(expect\\)[ \t\n]+\\sw+[ \t\n]+\\(is\\)\\>"
                '((1 'font-lock-keyword-face append) (2 'font-lock-keyword-face append)))
          ;; Fontify all builtin keywords
          (cons specman-keywords
