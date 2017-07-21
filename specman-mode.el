@@ -1945,7 +1945,7 @@ See also `specman-font-lock-extra-types'.")
             ;; predefined types
             ;; ----------------
             "bit" "bits" "bool" "byte" "bytes"
-            "int" "uint" "long" "nibble" "index"
+            "int" "uint" "long" "longuint" "nibble" "index" "real"
             "file" "string"
             "time" "e_time_units"
             "semaphore" "message_logger"
@@ -2117,6 +2117,17 @@ See also `specman-font-lock-extra-types'.")
             "str_lower" "str_upper" "str_insensitive"
 
 
+            ;; macro-related
+            ;; -------------
+            ;; "str_expand_dots" already in list
+            "get_current_line_num" "get_current_module" "reject_match"
+            
+            
+            ;; Struct ID Routine
+            ;; -----------------
+            "sn_unique_id_for_struct"
+            
+
             ;; deep copy and compare
             ;; ---------------------
             "deep_copy" "deep_compare" "deep_compare_physical"
@@ -2132,8 +2143,21 @@ See also `specman-font-lock-extra-types'.")
             ;; ----------
             ;; "min" "max" - already in list
             "abs" "odd" "even" "ilog2" "ilog10" "ipow" "isqrt" "div_round_up"
-
-
+            
+            
+            ;; arithmetic for real type
+            ;; ------------------------
+            "floor" "ceil" "round" "log" "log10" "pow" "sqrt" "exp"
+            "sin" "cos" "tan" "asin" "acos" "atan"
+            "sinh" "cosh" "tanh" "asinh" "acosh" "atanh"
+            "atan2" "hypot" "is_nan" "is_finite"
+            
+            
+            ;; random distribution
+            ;; -------------------
+            "dist_uniform" "dist_normal" "rdist_uniform" "rdist_normal"
+            
+            
             ;; output
             ;; ------
             "out" "outf"
@@ -2144,6 +2168,11 @@ See also `specman-font-lock-extra-types'.")
             "set_config" "get_config" "write_config" "read_config"
             "set_retain_state" "get_retain_state"
 
+
+            ;; agent-related routine
+            ;; ---------------------
+            "agent_command"
+            
 
             ;; specman command
             ;; ---------------
@@ -2175,9 +2204,9 @@ See also `specman-font-lock-extra-types'.")
             "files.write_ascii_struct" "files.write_binary_struct"
 
 
-            ;; On-the-Fly Garbage Collection Routine
-            ;; -------------------------------------
-            "do_otf_gc"
+            ;; Memory-Related Routines
+            ;; -----------------------
+            "do_otf_gc" "get_zombies"
 
             
             ;; Constructs for Packing and Unpacking
@@ -2200,6 +2229,11 @@ See also `specman-font-lock-extra-types'.")
             "message" "messagef"
 
 
+            ;; structured debug messages
+            ;; -------------------------
+            "msg_started" "msg_ended" "msg_transformed" "msg_changed" "msg_info"
+
+            
             ;; predefined global test phase methods
             ;; ------------------------------------
             "setup_test" "generate_test" "start_test" "run_test" "extract_test"
@@ -2224,8 +2258,13 @@ See also `specman-font-lock-extra-types'.")
             
             ;; predefined any_unit methods
             ;; ---------------------------
-            "hdl_path" "full_hdl_path" "e_path" "agent" "get_parent_unit"
-
+            "hdl_path" "full_hdl_path" "e_path" "agent" "get_parent_unit" "hdl_expression"
+            "agent_code" "always_force" "declared_range"
+            "declared_size" "delayed" "driver" "driver_delay" "driver_initial_value"
+            "edge" "external_type" "external_uvm" "external_uvm_class" "external_uvm_path"
+            "hdl_convertor" "inverse" "pack_options" "pli_access" "pli_field_access" "read_type"
+            "verilog_delta_delay" "verilog_drive" "verilog_drive_hold" "verilog_forcible"
+            "verilog_strobe" "verilog_wire" "vhdl_delay_mode" "vhdl_disconnect_value" "vhdl_driver"
             
             ;; language pseudo-methods
             ;; -----------------------
@@ -2360,7 +2399,7 @@ See also `specman-font-lock-extra-types'.")
             ;; generation keywords
             ;; -------------------
             "before" "keep" "keeping" "soft" "select" "gen"
-            "others" "pass" "edges" "min" "max" "const"
+            "others" "pass" "edges" "min" "max" "const" "static"
 
             
             ;; coverage keywords
