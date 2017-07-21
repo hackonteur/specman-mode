@@ -1945,7 +1945,7 @@ See also `specman-font-lock-extra-types'.")
             ;; predefined types
             ;; ----------------
             "bit" "bits" "bool" "byte" "bytes"
-            "int" "uint" "long" "nibble" "index"
+            "int" "uint" "long" "longuint" "nibble" "index" "real"
             "file" "string"
             "time" "e_time_units"
             "semaphore" "message_logger"
@@ -2199,6 +2199,9 @@ See also `specman-font-lock-extra-types'.")
             ;; --------
             "message" "messagef"
 
+            ;; structured debug messages
+            ;; -------------------------
+            "msg_started" "msg_ended" "msg_transformed" "msg_changed" "msg_info"
 
             ;; predefined global test phase methods
             ;; ------------------------------------
@@ -2224,8 +2227,13 @@ See also `specman-font-lock-extra-types'.")
             
             ;; predefined any_unit methods
             ;; ---------------------------
-            "hdl_path" "full_hdl_path" "e_path" "agent" "get_parent_unit"
-
+            "hdl_path" "full_hdl_path" "e_path" "agent" "get_parent_unit" "hdl_expression"
+            "agent_code" "always_force" "declared_range"
+            "declared_size" "delayed" "driver" "driver_delay" "driver_initial_value"
+            "edge" "external_type" "external_uvm" "external_uvm_class" "external_uvm_path"
+            "hdl_convertor" "inverse" "pack_options" "pli_access" "pli_field_access" "read_type"
+            "verilog_delta_delay" "verilog_drive" "verilog_drive_hold" "verilog_forcible"
+            "verilog_strobe" "verilog_wire" "vhdl_delay_mode" "vhdl_disconnect_value" "vhdl_driver"
             
             ;; language pseudo-methods
             ;; -----------------------
@@ -2360,7 +2368,7 @@ See also `specman-font-lock-extra-types'.")
             ;; generation keywords
             ;; -------------------
             "before" "keep" "keeping" "soft" "select" "gen"
-            "others" "pass" "edges" "min" "max" "const"
+            "others" "pass" "edges" "min" "max" "const" "static"
 
             
             ;; coverage keywords
